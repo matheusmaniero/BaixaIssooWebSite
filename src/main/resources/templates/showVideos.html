@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="video: ${videos}">
+    <video controls="" width="320" height="240">
+        <source th:src="${video.videoUrl}" type="video/mp4">
+
+    </video>
+    <a th:href="@{/download(path=${video.videoUrl})}" >Baixar Video</a>
+
+</div>
+
+</body>
+</html>
