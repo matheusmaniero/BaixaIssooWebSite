@@ -1,5 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">>
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
 
-body {
+  <style>
+    body {
   background-color: #f2f2f2;
   overflow-x: hidden;
   font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -75,7 +80,6 @@ main {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  width: 300px;
 }
 
 .pagination ul {
@@ -100,3 +104,42 @@ main {
 
 
 
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">FAQ</a>
+    <a href="#">About</a>
+  </nav>
+  <form>
+    <input type="text" placeholder="Digite seu usuário do twitter">
+    <input type="submit" value="Pesquisar">
+  </form>
+</header>
+<main>
+  <div th:each="video: ${videos}" class="video">
+    <video controls width="320" height="240">
+      <source th:src="${video.videoUrl}" type="video/mp4">
+    </video>
+    <br>
+    <a th:href="@{/download(path=${video.videoUrl})}" >Baixar Video</a>
+  </div>
+
+  <div class="pagination">
+    <ul>
+      <span th:each="i: ${#numbers.sequence(1,totalPages)}">
+           <li>
+             <a th:if = "${currentPage != i}" th:href="@{'/user?userScreenName='+${user}+'&page='+${i}}">[[${i}]]</a>
+             <a th:unless="${currentPage != i}">[[${i}]]</a>
+          </li>
+      </span>
+
+    </ul>
+
+  </div>
+
+</main>
+</body>
+</html>

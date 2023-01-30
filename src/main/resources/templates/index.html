@@ -11,7 +11,8 @@
     <a href="#">About</a>
   </nav>
   <form>
-    <input type="text" placeholder="@twitteruser">
+    <input type="text" placeholder="Digite seu usuário do twitter">
+    <input type="submit" value="Pesquisar">
   </form>
 </header>
 <main>
@@ -22,6 +23,20 @@
     <br>
     <a th:href="@{/download(path=${video.videoUrl})}" >Baixar Video</a>
   </div>
+
+  <div class="pagination">
+    <ul>
+      <span th:each="i: ${#numbers.sequence(1,totalPages)}">
+           <li>
+             <a th:if = "${currentPage != i}" th:href="@{'/user?userScreenName='+${user}+'&page='+${i}}">[[${i}]]</a>
+             <a th:unless="${currentPage != i}">[[${i}]]</a>
+          </li>
+      </span>
+
+    </ul>
+
+  </div>
+
 </main>
 </body>
 </html>
