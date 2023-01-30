@@ -3,25 +3,18 @@ package com.baixaisso.baixaissoowebsite.controllersTest;
 import com.baixaisso.baixaissoowebsite.model.User;
 import com.baixaisso.baixaissoowebsite.model.Video;
 import com.baixaisso.baixaissoowebsite.services.VideoService;
-import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.*;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 

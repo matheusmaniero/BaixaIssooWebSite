@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">>
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">FAQ</a>
+    <a href="#">About</a>
+  </nav>
+  <form>
+    <input type="text" placeholder="@twitteruser">
+  </form>
+</header>
+<main>
+  <div th:each="video: ${videos}" class="video">
+    <video controls width="320" height="240">
+      <source th:src="${video.videoUrl}" type="video/mp4">
+    </video>
+    <br>
+    <a th:href="@{/download(path=${video.videoUrl})}" >Baixar Video</a>
+  </div>
+</main>
+</body>
+</html>

@@ -34,10 +34,10 @@ public class UserController {
     @GetMapping("/user")
     public String loadVideosPage(@RequestParam String userScreenName, Model model){
         User user =  userService.getUser(userScreenName);
-        Page<Video> pageVideos = videoService.getVideos(user.getTwitterUserId(),0,2);
+        Page<Video> pageVideos = videoService.getVideos(user.getTwitterUserId(),0,8);
         model.addAttribute("videos",pageVideos);
 
-        return "showVideos";
+        return "index";
     }
 
     @GetMapping("/download")
