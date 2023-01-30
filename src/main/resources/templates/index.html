@@ -5,15 +5,11 @@
 </head>
 <body>
 <header>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">FAQ</a>
-    <a href="#">About</a>
-  </nav>
   <form>
-    <input type="text" placeholder="Digite seu usuário do twitter">
+    <input type="text" placeholder="Digite seu @ do twitter...">
     <input type="submit" value="Pesquisar">
   </form>
+
 </header>
 <main>
   <div th:each="video: ${videos}" class="video">
@@ -39,4 +35,10 @@
 
 </main>
 </body>
+<footer>
+  <a href="#">Home</a>
+  <a href="#">FAQ</a>
+  <a href="#">About</a>
+
+</footer>
 </html>

@@ -10,7 +10,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #333;
   color: #fff;
 }
 
@@ -18,6 +17,8 @@ nav a {
   margin-right: 10px;
   text-decoration: none;
   color: #fff;
+
+
 }
 
 form input[type="text"] {
@@ -106,6 +107,63 @@ main {
   background-color: blue;
   color: white;
 }
+
+header form {
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #ff5722;
+   padding: 2% 2%;
+   border-radius: 5px;
+   width: 95%;
+   margin: auto auto;
+}
+
+form input[type="text"] {
+  padding: 1%;
+  width: 95%;
+  font-size: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: #333;
+  color: #fff;
+}
+
+footer a {
+  margin: 0 1em;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+footer a:hover {
+  color: #333;
+  background-color: #fff;
+}
+
+
 
 
 
