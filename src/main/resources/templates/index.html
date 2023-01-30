@@ -5,9 +5,9 @@
 </head>
 <body>
 <header>
-  <form>
-    <input type="text" placeholder="Digite seu @ do twitter...">
-    <input type="submit" value="Pesquisar">
+  <form th:action="@{'/user?userScreenName='+${userScreenName}}" method="get">
+    <input type="text" name="userScreenName" placeholder="digite seu @ do twitter..">
+    <input type="submit" value="Search">
   </form>
 
 </header>

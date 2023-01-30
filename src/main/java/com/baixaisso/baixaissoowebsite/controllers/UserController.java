@@ -33,21 +33,25 @@ public class UserController {
 
     @GetMapping("/user")
     public String loadVideosPage(@RequestParam String userScreenName, @RequestParam (defaultValue = "1") int page, Model model){
+        userScreenName = userScreenName.replaceAll("@","").trim();
         User user =  userService.getUser(userScreenName);
         if (page < 1){
            page =1;
         }
 
-        Page<Video> pageVideos = videoService.getVideos(user.getTwitterUserId(),page-1,9);
-        int totalPages = pageVideos.getTotalPages();
-        model.addAttribute("videos",pageVideos);
-        model.addAttribute("currentPage",page);
-        model.addAttribute("totalPages",totalPages);
-        model.addAttribute("user",userScreenName);
+        if (user != null){
+            Page<Video> pageVideos = videoService.getVideos(user.getTwitterUserId(),page-1,9);
+            int totalPages = pageVideos.getTotalPages();
+            model.addAttribute("videos",pageVideos);
+            model.addAttribute("currentPage",page);
+            model.addAttribute("totalPages",totalPages);
+            model.addAttribute("user",userScreenName);
 
-        return "index";
+            return "index";
 
+        }
 
+        return "error";
 
 
 
