@@ -38,7 +38,6 @@ public class UserController {
         if (page < 1){
            page =1;
         }
-
         if (user != null){
             Page<Video> pageVideos = videoService.getVideos(user.getTwitterUserId(),page-1,9);
             int totalPages = pageVideos.getTotalPages();
@@ -47,15 +46,10 @@ public class UserController {
             model.addAttribute("totalPages",totalPages);
             model.addAttribute("user",userScreenName);
 
-            return "index";
-
-        }
-
-        return "error";
-
-
-
     }
+
+        return "videosByUser";
+   }
 
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadFile(@RequestParam String path) throws MalformedURLException {

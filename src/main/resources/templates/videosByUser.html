@@ -4,15 +4,9 @@
   <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
 </head>
 <body>
-<header>
-  <form th:action="@{'/user?userScreenName='+${userScreenName}}" method="get">
-    <input type="text" name="userScreenName" placeholder="digite seu @ do twitter..">
-    <input type="submit" value="Search">
-  </form>
-
-</header>
+<div th:replace="~{fragments/header :: header}" ></div>
 <main>
-  <div th:each="video: ${videos}" class="video">
+  <div th:if="${user} != null" th:each="video: ${videos}"  class="video">
     <video controls width="320" height="240">
       <source th:src="${video.videoUrl}" type="video/mp4">
     </video>
@@ -20,7 +14,11 @@
     <a th:href="@{/download(path=${video.videoUrl})}" >Baixar Video</a>
   </div>
 
-  <div class="pagination">
+  <div th:unless="${user} != null" class="user-not-found">
+    <p>Este @usuário não consta em nossa base de dados.. ;\</p>
+  </div>
+
+  <div th:if="${user} != null" class="pagination">
     <ul>
       <span th:each="i: ${#numbers.sequence(1,totalPages)}">
            <li>
@@ -33,12 +31,9 @@
 
   </div>
 
+
 </main>
 </body>
-<footer>
-  <a href="#">Home</a>
-  <a href="#">FAQ</a>
-  <a href="#">About</a>
+<div th:replace="~{fragments/footer :: footer}"></div>
 
-</footer>
 </html>
