@@ -17,7 +17,7 @@ public class User {
     private String screenName;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_twitter_user_id")
+    @JoinColumn(name = "twitter_user_id")
     private List<Video> videos = new ArrayList<>();
 
     public User(){

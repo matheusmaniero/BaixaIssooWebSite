@@ -18,11 +18,11 @@
     <p>Este @usuário não consta em nossa base de dados.. ;\</p>
   </div>
 
-  <div th:if="${user} != null" class="pagination">
+  <div th:if="${user} != null and ${totalPages} > 1" class="pagination">
     <ul>
       <span th:each="i: ${#numbers.sequence(1,totalPages)}">
            <li>
-             <a th:if = "${currentPage != i}" th:href="@{'/user?userScreenName='+${user}+'&page='+${i}}">[[${i}]]</a>
+             <a th:if = "${currentPage != i}"  th:href="@{'/user?userScreenName='+${user}+'&page='+${i}}">[[${i}]]</a>
              <a th:unless="${currentPage != i}">[[${i}]]</a>
           </li>
       </span>

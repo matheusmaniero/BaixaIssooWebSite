@@ -12,7 +12,7 @@ public class Video {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "fk_twitter_user_id")
+    @Column(name = "twitter_user_id")
     private Long ownerId;
 
     @Column(name="video_link")
