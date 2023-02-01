@@ -84,8 +84,8 @@ public class UserControllerTest {
                         .param("path", path)
                         .header("Content-Disposition", "attachment; filename=video.mp4"))
                 .andExpect(status().isOk())
+                .andExpect(header().string("Content-Type", "video/mp4"))
                 .andExpect(header().string("Content-Disposition", "attachment; filename=video.mp4"));
-
     }
 
 

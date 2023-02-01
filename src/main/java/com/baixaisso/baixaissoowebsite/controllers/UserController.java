@@ -33,7 +33,7 @@ public class UserController {
 
     @GetMapping("/user")
     public String loadVideosPage(@RequestParam String userScreenName, @RequestParam (defaultValue = "1") int page, Model model){
-        userScreenName = userScreenName.replaceAll("@","").trim();
+        userScreenName = userScreenName.replaceAll("@","").trim().toLowerCase();
         User user =  userService.getUser(userScreenName);
         if (page < 1){
            page =1;
@@ -56,6 +56,7 @@ public class UserController {
         URL fileUrl = new URL(path);
         Resource resource = new UrlResource(fileUrl);
         HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "video/mp4");
         headers.add("Content-Disposition", "attachment; filename=video.mp4");
 
         return ResponseEntity.ok().headers(headers).contentLength(-1).body(resource);
