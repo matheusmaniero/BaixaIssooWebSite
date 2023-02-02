@@ -4,6 +4,8 @@ import com.baixaisso.baixaissoowebsite.model.User;
 import com.baixaisso.baixaissoowebsite.model.Video;
 import com.baixaisso.baixaissoowebsite.services.UserService;
 import com.baixaisso.baixaissoowebsite.services.VideoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -20,6 +22,8 @@ import java.net.URL;
 
 @Controller
 public class UserController {
+
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
@@ -47,7 +51,6 @@ public class UserController {
             model.addAttribute("user",userScreenName);
 
     }
-
         return "videosByUser";
    }
 
