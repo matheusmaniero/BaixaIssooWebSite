@@ -12,8 +12,9 @@ public class ProjectSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
                 http
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/admin/actuator/**"))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin/actuator/**").permitAll()
                         .anyRequest().permitAll()
                 );
                 http.headers().frameOptions().disable();
