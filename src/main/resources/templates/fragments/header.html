@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">>
 <header th:fragment="header">
-  <form th:action="@{'/user?userScreenName='}" method="get">
-    <input type="text" name="userScreenName" placeholder="digite seu @ do twitter..">
+  <form th:action="@{'/u?user='}" method="get">
+    <input type="text" name="user" placeholder="digite seu @ do twitter..">
     <input type="submit" value="Pesquisar">
   </form>
 </header>

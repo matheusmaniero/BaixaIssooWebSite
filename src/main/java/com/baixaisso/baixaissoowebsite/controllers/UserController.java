@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 public class UserController {
@@ -35,8 +36,8 @@ public class UserController {
         this.videoService = videoService;
     }
 
-    @GetMapping("/user")
-    public String loadVideosPage(@RequestParam String userScreenName, @RequestParam (defaultValue = "1") int page, Model model){
+    @GetMapping("/u")
+    public String loadVideosPage(@RequestParam(name = "user") String userScreenName, @RequestParam (defaultValue = "1") int page, Model model) throws Exception {
         userScreenName = userScreenName.replaceAll("@","").trim().toLowerCase();
         User user =  userService.getUser(userScreenName);
         if (page < 1){

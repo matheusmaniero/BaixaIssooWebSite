@@ -1,7 +1,9 @@
 package com.baixaisso.baixaissoowebsite.controllersTest;
 
+import com.baixaisso.baixaissoowebsite.controllers.UserController;
 import com.baixaisso.baixaissoowebsite.model.User;
 import com.baixaisso.baixaissoowebsite.model.Video;
+import com.baixaisso.baixaissoowebsite.services.UserService;
 import com.baixaisso.baixaissoowebsite.services.VideoService;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.*;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,8 +23,8 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(UserController.class)
+@AutoConfigureMockMvc(addFilters = false)
 @RunWith(SpringRunner.class)
 public class UserControllerTest {
 
@@ -31,6 +33,9 @@ public class UserControllerTest {
 
     @MockBean
     VideoService videoService;
+
+    @MockBean
+    UserService userService;
 
     @Before
     public void setup(){
@@ -56,6 +61,7 @@ public class UserControllerTest {
         Pageable pageable = PageRequest.of(0,9, Sort.by("createdAt").descending());
         Page<Video> page = new PageImpl<>(videos,pageable,videos.size());
         Mockito.when(videoService.getVideos(user.getTwitterUserId(), 0,9)).thenReturn(page);
+        Mockito.when(userService.getUser(Mockito.anyString())).thenReturn(user);
 
 
     }
@@ -65,7 +71,7 @@ public class UserControllerTest {
         User user = new User(1403858370730278915L,"maniero87929783");
         Page<Video> pageVideos = videoService.getVideos(user.getTwitterUserId(), 0,9);
 
-        mockMvc.perform(get("/user?userScreenName=maniero87929783"))
+        mockMvc.perform(get("/u?user=maniero87929783"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("videosByUser"))
                 .andExpect(model().attribute("videos",pageVideos))

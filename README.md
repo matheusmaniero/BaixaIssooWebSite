@@ -1,4 +1,4 @@
-This website is running on Railway: https://baixaissoowebsite-production.up.railway.app/
+This website is running on Railway: https://baixaissoo.up.railway.app/
 
 It was made using Springboot ecosystem.
 I developed this website to show all the videos requested by users of @BaixaIssoo video downloader
